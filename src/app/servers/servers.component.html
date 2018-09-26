@@ -11,8 +11,15 @@
     [(ngModel)] = "serverName"
 />
 
-<button [disabled]="!allowNewServer" > add Server</button>
+<button [disabled]="!allowNewServer" 
+   (click)="onServerAdded()" > add Server</button>
 
 <p>Server Name : {{serverName}}</p>
+
+<p *ngIf="serverCreated; else noServer">server was created with name {{serverName}}</p>
+
+<ng-template #noServer>
+    <p>No server was created</p>
+</ng-template>
 
 <app-server></app-server>
